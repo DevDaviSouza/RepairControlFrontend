@@ -156,10 +156,6 @@ Sistema de toast notifications para feedback de ações:
 
 O sistema está preparado para autenticação via JWT. Quando implementado no backend, o token será automaticamente incluído nas requisições através do interceptor do Axios.
 
-## 📱 Responsividade
-
-O frontend é totalmente responsivo, utilizando Tailwind CSS para adaptação a diferentes tamanhos de tela.
-
 ## 🧪 Próximos Passos
 
 - Implementar testes unitários
