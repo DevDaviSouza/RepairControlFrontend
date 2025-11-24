@@ -29,7 +29,7 @@ export const SelectOrderForPayment = () => {
       const [ordersData, paymentsData, customersData] = await Promise.all([
         ordersService.findAll({ page: 0, limit: 100 }),
         paymentsService.findAll(),
-        customersService.findAll({ page: 0, limit: 1000 }),
+        customersService.findAll({ page: 0, limit: 100 }),
       ]);
       setOrders(ordersData.items);
       setPayments(paymentsData);
