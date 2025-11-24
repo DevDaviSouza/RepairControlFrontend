@@ -72,28 +72,28 @@ export const PaymentsList = () => {
   }
 
   return (
-    <div>
+    <div className="text-dv-text">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Pagamentos</h1>
+        <h1 className="text-2xl font-bold text-dv-text">Pagamentos</h1>
         <Link to="/payments/select-order">
           <Button variant="primary">Novo Pagamento</Button>
         </Link>
       </div>
 
       <Card className="mb-6">
-        <div className="text-sm text-gray-600 mb-1">Total Recebido</div>
-        <div className="text-3xl font-bold text-green-600">
+        <div className="text-sm text-white/80 mb-1">Total Recebido</div>
+        <div className="text-3xl font-bold text-dv-lime">
           R$ {totalPayments.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
         </div>
       </Card>
 
-      <div className="bg-white shadow-md rounded-lg overflow-hidden">
+      <div className="rounded-2xl">
         <Table
           headers={['ID', 'Ordem ID', 'Valor Total', 'Valor Pago', 'Valor Restante', 'Ações']}
         >
           {payments.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={7} className="text-center py-8 text-gray-500">
+              <TableCell colSpan={7} className="text-center py-8 text-dv-textMuted">
                 Nenhum pagamento encontrado
               </TableCell>
             </TableRow>
@@ -102,7 +102,7 @@ export const PaymentsList = () => {
               <TableRow key={payment.payment_id}>
                 <TableCell>{payment.payment_id}</TableCell>
                 <TableCell>
-                  <Link to={`/orders/${payment.order_id}`} className="text-blue-600 hover:underline">
+                  <Link to={`/orders/${payment.order_id}`} className="text-dv-lime hover:underline">
                     #{payment.order_id}
                   </Link>
                 </TableCell>

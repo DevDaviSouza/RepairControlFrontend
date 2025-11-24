@@ -17,25 +17,25 @@ export const Pagination = ({
   const endItem = Math.min(currentPage * itemsPerPage, totalItems);
 
   return (
-    <div className="flex items-center justify-between mt-4">
-      <div className="text-sm text-gray-700">
+    <div className="flex items-center justify-between mt-4 text-dv-text">
+      <div className="text-sm text-dv-textMuted">
         Mostrando {startItem} a {endItem} de {totalItems} resultados
       </div>
       <div className="flex gap-2">
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-3 py-2 border rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+          className="px-3 py-2 border border-dv-border rounded-md bg-dv-surfaceAlt text-dv-text disabled:opacity-40 disabled:cursor-not-allowed hover:bg-dv-surface transition-colors"
         >
           Anterior
         </button>
-        <span className="px-3 py-2">
+        <span className="px-3 py-2 text-dv-text">
           Página {currentPage} de {totalPages}
         </span>
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="px-3 py-2 border rounded-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+          className="px-3 py-2 border border-dv-border rounded-md bg-dv-surfaceAlt text-dv-text disabled:opacity-40 disabled:cursor-not-allowed hover:bg-dv-surface transition-colors"
         >
           Próxima
         </button>

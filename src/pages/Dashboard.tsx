@@ -54,30 +54,30 @@ export const Dashboard = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Dashboard</h1>
+      <h1 className="text-2xl font-bold text-dv-text mb-6">Dashboard</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <Card>
-          <div className="text-sm text-gray-600 mb-1">Ordens Atrasadas</div>
-          <div className="text-3xl font-bold text-red-600">{delayedCount}</div>
-          <Link to="/orders?filter=late" className="text-blue-600 text-sm mt-2 inline-block">
+        <Card surface={false} className="bg-dv-red border-none text-white">
+          <div className="text-sm text-white/80 mb-1">Ordens Atrasadas</div>
+          <div className="text-3xl font-bold">{delayedCount}</div>
+          <Link to="/orders?filter=late" className="text-dv-lime text-sm mt-2 inline-block">
             Ver detalhes →
           </Link>
         </Card>
 
-        <Card>
-          <div className="text-sm text-gray-600 mb-1">Pendentes de Pintura</div>
-          <div className="text-3xl font-bold text-orange-600">{pendingPainting}</div>
+        <Card surface={false} className="bg-dv-gold border-none text-white">
+          <div className="text-sm text-white/80 mb-1">Pendentes de Pintura</div>
+          <div className="text-3xl font-bold">{pendingPainting}</div>
         </Card>
 
-        <Card>
-          <div className="text-sm text-gray-600 mb-1">Peças Entregues (Mês)</div>
-          <div className="text-3xl font-bold text-green-600">{deliveryItems}</div>
+        <Card surface={false} className="bg-dv-blue border-none text-white">
+          <div className="text-sm text-white/80 mb-1">Peças Entregues (Mês)</div>
+          <div className="text-3xl font-bold">{deliveryItems}</div>
         </Card>
 
-        <Card>
-          <div className="text-sm text-gray-600 mb-1">Total Recebido</div>
-          <div className="text-3xl font-bold text-blue-600">
+        <Card surface={false} className="bg-dv-green border-none text-white">
+          <div className="text-sm text-white/80 mb-1">Total Recebido</div>
+          <div className="text-3xl font-bold">
             R$ {totalPayments.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
           </div>
         </Card>
@@ -86,36 +86,36 @@ export const Dashboard = () => {
       {proxLate.length > 0 && (
         <Card title="Ordens Próximas do Prazo (2 dias)">
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+            <table className="min-w-full divide-y divide-dv-border">
+              <thead className="bg-dv-surfaceAlt">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-dv-textMuted uppercase">
                     ID
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-dv-textMuted uppercase">
                     Modelo
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-dv-textMuted uppercase">
                     Placa
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                  <th className="px-6 py-3 text-left text-xs font-medium text-dv-textMuted uppercase">
                     Data Conclusão
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className="bg-dv-surface divide-y divide-dv-border">
                 {proxLate.map((order) => (
                   <tr key={order.order_id}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-dv-text">
                       #{order.order_id}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-dv-text">
                       {order.ds_model}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-dv-text">
                       {order.ds_plate}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-dv-text">
                       {order.dt_completion
                         ? format(new Date(order.dt_completion), "dd/MM/yyyy")
                         : '-'}

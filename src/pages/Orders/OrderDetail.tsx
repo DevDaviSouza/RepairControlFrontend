@@ -137,9 +137,9 @@ export const OrderDetail = () => {
   }
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Ordem de Serviço #{order.order_id}</h1>
+    <div className="text-dv-text space-y-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold text-dv-text">Ordem de Serviço #{order.order_id}</h1>
         <div className="flex gap-2">
           <Link to={`/orders/${id}/edit`}>
             <Button variant="secondary">Editar</Button>
@@ -263,7 +263,7 @@ export const OrderDetail = () => {
       </div>
 
       <Card title="Descrição dos Serviços">
-        <p className="text-gray-700">{order.ds_services || '-'}</p>
+        <p className="text-dv-textMuted">{order.ds_services || '-'}</p>
       </Card>
 
       <Modal

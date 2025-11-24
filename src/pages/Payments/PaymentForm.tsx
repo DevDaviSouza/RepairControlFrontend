@@ -102,8 +102,8 @@ export const PaymentForm = () => {
     : orderTotal;
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">
+    <div className="max-w-2xl mx-auto text-dv-text">
+      <h1 className="text-2xl font-bold text-dv-text mb-6">
         {existingPayment ? 'Adicionar Valor ao Pagamento' : 'Novo Pagamento'} - Ordem #{orderId}
       </h1>
 
@@ -120,7 +120,7 @@ export const PaymentForm = () => {
           </div>
           <div>
             <span className="font-medium">Valor Total da Ordem: </span>
-            <span className="text-green-600 font-semibold">
+            <span className="text-dv-lime font-semibold">
               R$ {orderTotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
             </span>
           </div>
@@ -132,7 +132,7 @@ export const PaymentForm = () => {
               </div>
               <div>
                 <span className="font-medium">Valor Restante: </span>
-                <span className="text-orange-600 font-semibold">
+                <span className="text-dv-gold font-semibold">
                   R$ {Number(existingPayment.vl_reamining || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                 </span>
               </div>
@@ -141,7 +141,7 @@ export const PaymentForm = () => {
         </div>
       </Card>
 
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6 space-y-4">
+      <form onSubmit={handleSubmit} className="bg-dv-surface border border-dv-border shadow-card-dark rounded-2xl p-6 space-y-4">
         <Input
           label={`Valor do Pagamento * (Máximo: R$ ${maxPayment.toLocaleString('pt-BR', { minimumFractionDigits: 2 })})`}
           type="number"
@@ -154,7 +154,7 @@ export const PaymentForm = () => {
         />
 
         {payment && Number(payment) > 0 && (
-          <div className="bg-blue-50 p-4 rounded-md">
+          <div className="bg-dv-surfaceAlt p-4 rounded-xl border border-dv-border">
             <div className="text-sm">
               <div className="font-medium mb-1">Resumo:</div>
               <div>Valor a pagar: R$ {Number(payment).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>

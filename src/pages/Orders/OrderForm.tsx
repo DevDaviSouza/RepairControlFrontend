@@ -135,12 +135,12 @@ export const OrderForm = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">
+    <div className="max-w-4xl mx-auto text-dv-text">
+      <h1 className="text-2xl font-bold text-dv-text mb-6">
         {isEdit ? 'Editar Ordem de Serviço' : 'Nova Ordem de Serviço'}
       </h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md rounded-lg p-6 space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="bg-dv-surface shadow-card-dark border border-dv-border rounded-2xl p-6 space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Select
             label="Cliente *"
@@ -239,6 +239,7 @@ export const OrderForm = () => {
             {...register('vlTotal', { valueAsNumber: true })}
             error={errors.vlTotal?.message}
             placeholder="0.00"
+          className="bg-[#B9FFB1] text-[#0F2E09]"
           />
         </div>
 

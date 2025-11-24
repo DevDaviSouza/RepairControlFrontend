@@ -69,21 +69,21 @@ export const CustomersList = () => {
   }
 
   return (
-    <div>
+    <div className="text-dv-text">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Clientes</h1>
+        <h1 className="text-2xl font-bold text-dv-text">Clientes</h1>
         <Link to="/customers/new">
           <Button variant="primary">Novo Cliente</Button>
         </Link>
       </div>
 
-      <div className="bg-white shadow-md rounded-lg overflow-hidden">
+      <div className="rounded-2xl">
         <Table
           headers={['ID', 'Nome', 'CPF', 'Telefone', 'Email', 'Ações']}
         >
           {customers.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={6} className="text-center py-8 text-gray-500">
+              <TableCell colSpan={6} className="text-center py-8 text-dv-textMuted">
                 Nenhum cliente encontrado
               </TableCell>
             </TableRow>

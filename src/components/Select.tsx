@@ -11,15 +11,15 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-dv-text mb-1">
             {label}
           </label>
         )}
         <select
           ref={ref}
-          className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            error ? 'border-red-500' : 'border-gray-300'
-          } ${className}`}
+          className={`w-full px-3 py-2 rounded-lg bg-[#EBEBEB] text-[#1C1C1C] border ${
+            error ? 'border-dv-red' : 'border-transparent'
+          } focus:outline-none focus:ring-2 focus:ring-dv-green ${className}`}
           {...props}
         >
           <option value="">Selecione...</option>
@@ -30,7 +30,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           ))}
         </select>
         {error && (
-          <p className="mt-1 text-sm text-red-600">{error}</p>
+          <p className="mt-1 text-sm text-dv-red">{error}</p>
         )}
       </div>
     );

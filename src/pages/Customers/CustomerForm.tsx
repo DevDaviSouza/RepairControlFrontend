@@ -84,12 +84,12 @@ export const CustomerForm = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">
+    <div className="max-w-2xl mx-auto text-dv-text">
+      <h1 className="text-2xl font-bold text-dv-text mb-6">
         {isEdit ? 'Editar Cliente' : 'Novo Cliente'}
       </h1>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md rounded-lg p-6 space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="bg-dv-surface border border-dv-border shadow-card-dark rounded-2xl p-6 space-y-4">
         <Input
           label="Nome"
           {...register('name')}

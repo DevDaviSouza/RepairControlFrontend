@@ -31,18 +31,18 @@ export const Modal = ({ isOpen, onClose, title, children, size = 'md' }: ModalPr
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className={`bg-white rounded-lg shadow-xl ${sizeClasses[size]} w-full m-4 max-h-[90vh] overflow-y-auto`}
+        className={`bg-dv-surface text-dv-text border border-dv-border rounded-2xl shadow-card-dark ${sizeClasses[size]} w-full m-4 max-h-[90vh] overflow-y-auto`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between p-4 border-b">
+        <div className="flex items-center justify-between p-4 border-b border-dv-border">
           <h2 className="text-xl font-semibold">{title}</h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 text-2xl"
+            className="text-dv-textSoft hover:text-dv-text text-2xl"
           >
             ×
           </button>

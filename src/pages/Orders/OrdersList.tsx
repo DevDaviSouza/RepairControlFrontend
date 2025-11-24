@@ -89,15 +89,15 @@ export const OrdersList = () => {
 
   const getStatusColor = (statusId: number | null) => {
     const colors: Record<number, string> = {
-      1: 'bg-blue-100 text-blue-800',
-      2: 'bg-yellow-100 text-yellow-800',
-      3: 'bg-green-100 text-green-800',
-      4: 'bg-purple-100 text-purple-800',
-      5: 'bg-orange-100 text-orange-800',
-      6: 'bg-gray-100 text-gray-800',
-      7: 'bg-green-200 text-green-900',
+      1: 'bg-[rgba(11,63,145,0.25)] text-[#8FB8FF]',
+      2: 'bg-[rgba(142,107,12,0.25)] text-[#F5D278]',
+      3: 'bg-[rgba(29,93,18,0.25)] text-[#9BFF9D]',
+      4: 'bg-[rgba(96,71,7,0.25)] text-[#F5CF8A]',
+      5: 'bg-[rgba(111,11,20,0.3)] text-[#FFC1C5]',
+      6: 'bg-[rgba(60,61,69,0.4)] text-[#D9D9E0]',
+      7: 'bg-[rgba(155,255,157,0.25)] text-[#7CFF90]',
     };
-    return colors[statusId || 1] || 'bg-gray-100 text-gray-800';
+    return colors[statusId || 1] || 'bg-[rgba(60,61,69,0.4)] text-[#D9D9E0]';
   };
 
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -111,9 +111,9 @@ export const OrdersList = () => {
   }
 
   return (
-    <div>
+    <div className="text-dv-text">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">
+        <h1 className="text-2xl font-bold text-dv-text">
           {filter === 'late' ? 'Ordens Atrasadas' : 'Ordens de Serviço'}
         </h1>
         <Link to="/orders/new">
@@ -121,13 +121,13 @@ export const OrdersList = () => {
         </Link>
       </div>
 
-      <div className="bg-white shadow-md rounded-lg overflow-hidden">
+      <div className="rounded-2xl">
         <Table
           headers={['ID', 'Modelo', 'Placa', 'Cliente', 'Data Pedido', 'Data Conclusão', 'Status', 'Valor Total', 'Ações']}
         >
           {orders.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={9} className="text-center py-8 text-gray-500">
+              <TableCell colSpan={9} className="text-center py-8 text-dv-textMuted">
                 Nenhuma ordem encontrada
               </TableCell>
             </TableRow>
@@ -155,7 +155,7 @@ export const OrdersList = () => {
                       : '-'}
                   </TableCell>
                   <TableCell>
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status_id)}`}>
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status_id)}`}>
                       {status?.ds_status || (order.status_id ? `Status ${order.status_id}` : 'Sem Status')}
                     </span>
                   </TableCell>
