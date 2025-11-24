@@ -100,7 +100,6 @@ export const OrderDetail = () => {
       setIsLoadingAction(true);
       await ordersService.finalize(Number(id));
       showToast('Ordem finalizada com sucesso', 'success');
-      loadOrder();
     } catch (error: any) {
       showToast(error.response?.data?.message || 'Erro ao finalizar ordem', 'error');
     } finally {
@@ -122,7 +121,6 @@ export const OrderDetail = () => {
       showToast('Data de conclusão alterada com sucesso', 'success');
       setCompletionDateModalOpen(false);
       setNewCompletionDate('');
-      loadOrder();
     } catch (error: any) {
       showToast(error.response?.data?.message || 'Erro ao alterar data', 'error');
     } finally {
