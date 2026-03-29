@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Sora:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,13 +11,15 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Sora', 'Manrope', 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #1B1C1F;
-  color: #F5F5F5;
+  background:
+    radial-gradient(1400px 600px at 80% -10%, rgba(63, 116, 220, 0.28), transparent 52%),
+    radial-gradient(900px 420px at -10% 12%, rgba(36, 76, 173, 0.24), transparent 50%),
+    linear-gradient(180deg, #070d1e 0%, #060b18 100%);
+  color: #eaf1ff;
+  min-height: 100vh;
 }
 
 code {
@@ -31,5 +35,9 @@ input,
 select,
 textarea {
   font-family: inherit;
+}
+
+#root {
+  min-height: 100vh;
 }
 

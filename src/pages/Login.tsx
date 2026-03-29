@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '@/components';
 import { Button } from '@/components';
@@ -16,13 +16,9 @@ export const Login = () => {
     setIsLoading(true);
 
     try {
-      // Por enquanto, como não há autenticação no backend, vamos simular um login
-      // Quando a autenticação for implementada, aqui será feita a chamada real
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      
-      // Simular token (remover quando autenticação real for implementada)
       localStorage.setItem('auth_token', 'mock_token');
-      
+
       showToast('Login realizado com sucesso!', 'success');
       navigate('/dashboard');
     } catch (error) {
@@ -33,51 +29,38 @@ export const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-dv-background py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 text-dv-text">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-dv-text">
-            RepairControl
-          </h2>
-          <p className="mt-2 text-center text-sm text-dv-textMuted">
-            Sistema de Gestão para Oficinas
-          </p>
+    <div className="min-h-screen flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-md rounded-3xl border border-dv-border bg-gradient-to-b from-dv-surface to-dv-backgroundSoft p-8 shadow-card-dark text-dv-text">
+        <div className="mb-8">
+          <p className="text-xs uppercase tracking-[0.2em] text-dv-textSoft">Sistema industrial</p>
+          <h2 className="mt-2 font-display text-5xl leading-none text-white">RepairControl</h2>
+          <p className="mt-3 text-sm text-dv-textMuted">Acesse para gerenciar ordens, clientes e pagamentos.</p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px">
-            <Input
-              label="Email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="seu@email.com"
-              className="rounded-t-md"
-            />
-            <Input
-              label="Senha"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="••••••••"
-              className="rounded-b-md"
-            />
-          </div>
 
-          <div>
-            <Button
-              type="submit"
-              variant="primary"
-              isLoading={isLoading}
-              className="w-full"
-            >
-              Entrar
-            </Button>
-          </div>
+        <form className="space-y-5" onSubmit={handleSubmit}>
+          <Input
+            label="Email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            placeholder="seu@email.com"
+          />
+
+          <Input
+            label="Senha"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            placeholder="********"
+          />
+
+          <Button type="submit" variant="primary" isLoading={isLoading} className="w-full py-3">
+            Entrar
+          </Button>
         </form>
       </div>
     </div>
   );
 };
-

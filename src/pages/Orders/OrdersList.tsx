@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components';
 import { Table, TableRow, TableCell } from '@/components';
@@ -45,7 +45,6 @@ export const OrdersList = () => {
       setOrders(ordersResponse.items);
       setTotalItems(ordersResponse.totalItems);
 
-      // Criar mapas para busca rápida
       const customersMap = new Map<number, Customer>();
       customersData.items.forEach((customer) => {
         if (customer.customers_id) {
@@ -73,7 +72,7 @@ export const OrdersList = () => {
 
     try {
       await ordersService.delete(orderToDelete);
-      showToast('Ordem excluída com sucesso', 'success');
+      showToast('Ordem excluida com sucesso', 'success');
       setDeleteModalOpen(false);
       setOrderToDelete(null);
       loadData();
@@ -89,15 +88,15 @@ export const OrdersList = () => {
 
   const getStatusColor = (statusId: number | null) => {
     const colors: Record<number, string> = {
-      1: 'bg-[rgba(11,63,145,0.25)] text-[#8FB8FF]',
-      2: 'bg-[rgba(142,107,12,0.25)] text-[#F5D278]',
-      3: 'bg-[rgba(29,93,18,0.25)] text-[#9BFF9D]',
-      4: 'bg-[rgba(96,71,7,0.25)] text-[#F5CF8A]',
-      5: 'bg-[rgba(111,11,20,0.3)] text-[#FFC1C5]',
-      6: 'bg-[rgba(60,61,69,0.4)] text-[#D9D9E0]',
-      7: 'bg-[rgba(155,255,157,0.25)] text-[#7CFF90]',
+      1: 'bg-[rgba(75,141,255,0.2)] text-[#A9C8FF]',
+      2: 'bg-[rgba(208,167,78,0.2)] text-[#FFDFA2]',
+      3: 'bg-[rgba(61,175,98,0.2)] text-[#AAEAC0]',
+      4: 'bg-[rgba(154,118,50,0.2)] text-[#F2CD8D]',
+      5: 'bg-[rgba(226,75,98,0.25)] text-[#FFC3CD]',
+      6: 'bg-[rgba(101,118,156,0.24)] text-[#D6E0FB]',
+      7: 'bg-[rgba(126,228,161,0.2)] text-[#B8F3CD]',
     };
-    return colors[statusId || 1] || 'bg-[rgba(60,61,69,0.4)] text-[#D9D9E0]';
+    return colors[statusId || 1] || 'bg-[rgba(101,118,156,0.24)] text-[#D6E0FB]';
   };
 
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -111,23 +110,24 @@ export const OrdersList = () => {
   }
 
   return (
-    <div className="text-dv-text">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-dv-text">
-          {filter === 'late' ? 'Ordens Atrasadas' : 'Ordens de Serviço'}
-        </h1>
+    <div className="text-dv-text space-y-6">
+      <section className="rounded-2xl border border-dv-border bg-gradient-to-r from-dv-surface to-dv-backgroundSoft p-6 md:p-8 shadow-card-dark flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div>
+          <h1 className="font-display text-5xl leading-none text-white">
+            {filter === 'late' ? 'ORDENS ATRASADAS' : 'ORDENS DE SERVICO'}
+          </h1>
+          <p className="mt-3 text-dv-textMuted">Gerencie e acompanhe a precisao tecnica dos reparos industriais.</p>
+        </div>
         <Link to="/orders/new">
-          <Button variant="primary">Nova Ordem</Button>
+          <Button variant="primary" className="w-full lg:w-auto px-6 py-3">Nova Ordem</Button>
         </Link>
-      </div>
+      </section>
 
-      <div className="rounded-2xl">
-        <Table
-          headers={['ID', 'Modelo', 'Placa', 'Cliente', 'Data Pedido', 'Data Conclusão', 'Status', 'Valor Total', 'Ações']}
-        >
+      <div>
+        <Table headers={['ID', 'Modelo', 'Placa', 'Cliente', 'Data Pedido', 'Data Conclusao', 'Status', 'Valor Total', 'Acoes']}>
           {orders.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={9} className="text-center py-8 text-dv-textMuted">
+              <TableCell colSpan={9} className="text-center py-12 text-dv-textMuted">
                 Nenhuma ordem encontrada
               </TableCell>
             </TableRow>
@@ -135,7 +135,7 @@ export const OrdersList = () => {
             orders.map((order) => {
               const customer = order.customer_id ? customers.get(order.customer_id) : null;
               const status = order.status_id ? statuses.get(order.status_id) : null;
-              
+
               return (
                 <TableRow key={order.order_id}>
                   <TableCell>#{order.order_id}</TableCell>
@@ -145,14 +145,10 @@ export const OrdersList = () => {
                     {customer?.nm_customer || (order.customer_id ? `Cliente #${order.customer_id}` : '-')}
                   </TableCell>
                   <TableCell>
-                    {order.dt_order
-                      ? format(new Date(order.dt_order), "dd/MM/yyyy", { locale: ptBR })
-                      : '-'}
+                    {order.dt_order ? format(new Date(order.dt_order), 'dd/MM/yyyy', { locale: ptBR }) : '-'}
                   </TableCell>
                   <TableCell>
-                    {order.dt_completion
-                      ? format(new Date(order.dt_completion), "dd/MM/yyyy", { locale: ptBR })
-                      : '-'}
+                    {order.dt_completion ? format(new Date(order.dt_completion), 'dd/MM/yyyy', { locale: ptBR }) : '-'}
                   </TableCell>
                   <TableCell>
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status_id)}`}>
@@ -167,13 +163,13 @@ export const OrdersList = () => {
                   <TableCell>
                     <div className="flex gap-2">
                       <Link to={`/orders/${order.order_id}`}>
-                        <Button variant="secondary" className="text-xs py-1 px-2">
+                        <Button variant="secondary" className="text-xs py-1 px-3">
                           Ver
                         </Button>
                       </Link>
                       <Button
                         variant="danger"
-                        className="text-xs py-1 px-2"
+                        className="text-xs py-1 px-3"
                         onClick={() => openDeleteModal(order.order_id)}
                       >
                         Excluir
@@ -203,7 +199,7 @@ export const OrdersList = () => {
           setDeleteModalOpen(false);
           setOrderToDelete(null);
         }}
-        title="Confirmar Exclusão"
+        title="Confirmar Exclusao"
       >
         <p className="mb-4">Tem certeza que deseja excluir esta ordem?</p>
         <div className="flex justify-end gap-2">
@@ -224,4 +220,3 @@ export const OrdersList = () => {
     </div>
   );
 };
-

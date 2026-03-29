@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from '@/components';
 import { Table, TableRow, TableCell } from '@/components';
@@ -48,7 +48,7 @@ export const PaymentsList = () => {
 
     try {
       await paymentsService.delete(paymentToDelete);
-      showToast('Pagamento excluído com sucesso', 'success');
+      showToast('Pagamento excluido com sucesso', 'success');
       setDeleteModalOpen(false);
       setPaymentToDelete(null);
       loadPayments();
@@ -72,28 +72,29 @@ export const PaymentsList = () => {
   }
 
   return (
-    <div className="text-dv-text">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-dv-text">Pagamentos</h1>
+    <div className="text-dv-text space-y-6">
+      <section className="rounded-2xl border border-dv-border bg-gradient-to-r from-dv-surface to-dv-backgroundSoft p-6 md:p-8 shadow-card-dark flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div>
+          <h1 className="font-display text-5xl leading-none text-white">PAGAMENTOS</h1>
+          <p className="mt-3 text-dv-textMuted">Controle completo dos recebimentos por ordem de servico.</p>
+        </div>
         <Link to="/payments/select-order">
-          <Button variant="primary">Novo Pagamento</Button>
+          <Button variant="success" className="w-full lg:w-auto px-6 py-3">Novo Pagamento</Button>
         </Link>
-      </div>
+      </section>
 
-      <Card className="mb-6">
-        <div className="text-sm text-white/80 mb-1">Total Recebido</div>
-        <div className="text-3xl font-bold text-dv-lime">
+      <Card className="border-dv-green/40">
+        <div className="text-xs uppercase tracking-[0.14em] text-dv-textMuted mb-2">Total recebido</div>
+        <div className="font-display text-5xl font-bold text-dv-lime">
           R$ {totalPayments.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
         </div>
       </Card>
 
-      <div className="rounded-2xl">
-        <Table
-          headers={['ID', 'Ordem ID', 'Valor Total', 'Valor Pago', 'Valor Restante', 'Ações']}
-        >
+      <div>
+        <Table headers={['ID', 'Ordem ID', 'Valor Total', 'Valor Pago', 'Valor Restante', 'Acoes']}>
           {payments.length === 0 ? (
             <TableRow>
-              <TableCell colSpan={7} className="text-center py-8 text-dv-textMuted">
+              <TableCell colSpan={7} className="text-center py-12 text-dv-textMuted">
                 Nenhum pagamento encontrado
               </TableCell>
             </TableRow>
@@ -124,13 +125,13 @@ export const PaymentsList = () => {
                 <TableCell>
                   <div className="flex gap-2">
                     <Link to={`/payments/${payment.order_id}/new`}>
-                      <Button variant="secondary" className="text-xs py-1 px-2">
+                      <Button variant="secondary" className="text-xs py-1 px-3">
                         Adicionar Valor
                       </Button>
                     </Link>
                     <Button
                       variant="danger"
-                      className="text-xs py-1 px-2"
+                      className="text-xs py-1 px-3"
                       onClick={() => openDeleteModal(payment.payment_id)}
                     >
                       Excluir
@@ -149,7 +150,7 @@ export const PaymentsList = () => {
           setDeleteModalOpen(false);
           setPaymentToDelete(null);
         }}
-        title="Confirmar Exclusão"
+        title="Confirmar Exclusao"
       >
         <p className="mb-4">Tem certeza que deseja excluir este pagamento?</p>
         <div className="flex justify-end gap-2">
@@ -170,4 +171,3 @@ export const PaymentsList = () => {
     </div>
   );
 };
-

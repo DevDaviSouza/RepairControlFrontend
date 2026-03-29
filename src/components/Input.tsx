@@ -10,15 +10,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium text-dv-text mb-1">
+          <label className="block text-xs uppercase tracking-[0.12em] font-semibold text-dv-textMuted mb-2">
             {label}
           </label>
         )}
         <input
           ref={ref}
-          className={`w-full px-3 py-2 rounded-lg bg-[#EBEBEB] text-[#1C1C1C] placeholder:text-[#6B6B6B] border ${
-            error ? 'border-dv-red' : 'border-transparent'
-          } focus:outline-none focus:ring-2 focus:ring-dv-green focus:border-dv-green ${className}`}
+          className={`w-full px-4 py-3 rounded-xl bg-dv-surfaceAlt/95 text-dv-text placeholder:text-dv-textSoft border ${
+            error ? 'border-dv-red' : 'border-dv-border'
+          } focus:outline-none focus:ring-2 focus:ring-dv-blue/50 focus:border-dv-blue ${className}`}
           {...props}
         />
         {error && (

@@ -14,13 +14,14 @@ export const Button = ({
   className = '',
   ...props 
 }: ButtonProps) => {
-  const baseStyles = 'px-4 py-2 rounded-md font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dv-surface';
+  const baseStyles =
+    'px-4 py-2 rounded-xl font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dv-surface active:scale-[0.98]';
   
   const variantStyles = {
-    primary: 'bg-dv-green text-white hover:bg-dv-green-dark shadow-card-dark',
+    primary: 'bg-gradient-to-r from-dv-blue to-[#7CA8FF] text-white hover:brightness-110 shadow-glow-blue',
     secondary: 'bg-dv-surfaceAlt text-dv-text hover:bg-dv-surface border border-dv-border',
-    danger: 'bg-dv-red text-white hover:bg-dv-red-dark shadow-card-dark',
-    success: 'bg-dv-gold text-white hover:bg-dv-gold-dark shadow-card-dark',
+    danger: 'bg-gradient-to-r from-dv-red to-[#F0677D] text-white hover:brightness-110 shadow-card-dark',
+    success: 'bg-gradient-to-r from-dv-green to-[#66CB88] text-white hover:brightness-110 shadow-card-dark',
   };
 
   return (

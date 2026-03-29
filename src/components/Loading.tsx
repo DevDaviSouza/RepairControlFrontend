@@ -8,7 +8,7 @@ export const Loading = ({ size = 'md' }: { size?: 'sm' | 'md' | 'lg' }) => {
   return (
     <div className="flex items-center justify-center">
       <div
-        className={`${sizeClasses[size]} border-4 border-dv-surfaceAlt border-t-dv-lime rounded-full animate-spin`}
+        className={`${sizeClasses[size]} border-4 border-dv-surfaceAlt border-t-dv-blue rounded-full animate-spin shadow-glow-blue`}
       />
     </div>
   );

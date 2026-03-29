@@ -114,7 +114,7 @@ export const EnterprisesList = () => {
               type="text"
               value={formData.nm_enterprise}
               onChange={(e) => setFormData({ ...formData, nm_enterprise: e.target.value })}
-              className="w-full px-3 py-2 rounded-lg bg-[#EBEBEB] text-[#1C1C1C] placeholder:text-[#6B6B6B] border border-transparent focus:outline-none focus:ring-2 focus:ring-dv-green"
+              className="w-full px-4 py-3 rounded-xl bg-dv-surfaceAlt/95 text-dv-text border border-dv-border focus:outline-none focus:ring-2 focus:ring-dv-blue/50 focus:border-dv-blue"
               required
             />
           </div>
@@ -126,7 +126,7 @@ export const EnterprisesList = () => {
               type="text"
               value={formData.ep_fantasy}
               onChange={(e) => setFormData({ ...formData, ep_fantasy: e.target.value })}
-              className="w-full px-3 py-2 rounded-lg bg-[#EBEBEB] text-[#1C1C1C] placeholder:text-[#6B6B6B] border border-transparent focus:outline-none focus:ring-2 focus:ring-dv-green"
+              className="w-full px-4 py-3 rounded-xl bg-dv-surfaceAlt/95 text-dv-text border border-dv-border focus:outline-none focus:ring-2 focus:ring-dv-blue/50 focus:border-dv-blue"
             />
           </div>
           <div>
@@ -137,7 +137,7 @@ export const EnterprisesList = () => {
               type="text"
               value={formData.ep_cnpj}
               onChange={(e) => setFormData({ ...formData, ep_cnpj: e.target.value })}
-              className="w-full px-3 py-2 rounded-lg bg-[#EBEBEB] text-[#1C1C1C] placeholder:text-[#6B6B6B] border border-transparent focus:outline-none focus:ring-2 focus:ring-dv-green"
+              className="w-full px-4 py-3 rounded-xl bg-dv-surfaceAlt/95 text-dv-text border border-dv-border focus:outline-none focus:ring-2 focus:ring-dv-blue/50 focus:border-dv-blue"
               required
             />
           </div>
